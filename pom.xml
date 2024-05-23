@@ -43,6 +43,7 @@
                 <archive>
                     <manifest>
                         <mainClass>com.example.App</mainClass>
+                         <mainClass>com.example.BonjourMain</mainClass>
                     </manifest>
                 </archive>
             </configuration>
