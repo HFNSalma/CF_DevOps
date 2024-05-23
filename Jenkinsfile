@@ -1,4 +1,5 @@
-pipeline {
+
+ pipeline {
     agent any
 
     stages {
@@ -17,11 +18,16 @@ pipeline {
                     def currentDir = pwd()
                     echo "Current directory: ${currentDir}"
                     
-                    
-                     {  
-                        bat 'mvn clean test package'
-                        bat "java -jar target/cfProject-1.0-SNAPSHOT.jar"
-                    }
+                    bat 'mvn clean test package'
+                }
+            }
+        }
+        stage('Run Jar') {
+            steps {
+                // Navigate to the target directory
+                dir('target') {
+                    // Run the generated jar file
+                    bat "java -jar cfProject-1.0-SNAPSHOT.jar"
                 }
             }
         }
